@@ -2,11 +2,6 @@
 import re
 from pathlib import Path
 from datetime import datetime
-try:
-    from git import Repo
-    GIT_AVAILABLE = True
-except ImportError:
-    GIT_AVAILABLE = False
 
 # Read the markdown file
 md_file = Path("content/page-content.md")
@@ -82,26 +77,4 @@ print(f"✓ Updated index.html with {len(projects)} projects")
 
 print("\n✓ All pages updated successfully!")
 
-# Git operations
-if GIT_AVAILABLE:
-    user_input = input("\nUpload the page to the server? (y/n): ").strip().lower()
-    if user_input == 'y' or user_input == 'yes':
-        try:
-            repo = Repo('.')
-            # Stage the updated files
-            repo.index.add(['index.html', 'about.html'])
-            # Create commit with timestamp
-            timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            repo.index.commit(f"Update website content ({timestamp})")
-            print(f"✓ Changes committed locally")
-            
-            # Prompt user before pushing
-                # Push to remote
-            repo.remote('origin').push()
-            print(f"✓ Pushed changes to git repository")
-        except Exception as e:
-            print(f"⚠ Git operation failed: {e}")
-            print("  Make sure the repository is initialized and has a remote configured")
-else:
-    print("\n⚠ GitPython not installed. Install with: pip install GitPython")
-    print("  to enable automatic git commit and push")
+
