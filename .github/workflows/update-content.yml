@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write
+
 jobs:
   update-content:
     runs-on: ubuntu-latest
@@ -21,10 +24,12 @@ jobs:
       with:
         python-version: '3.9'
     
-    - name: Install dependencies
+    - name: Check if content file exists
       run: |
-        python -m pip install --upgrade pip
-
+        if [ ! -f "content/page-content.md" ]; then
+          echo "Error: content/page-content.md not found"
+          exit 1
+        fi
     
     - name: Run content update script
       run: python update_content.py
@@ -34,4 +39,9 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add index.html about.html
-        git diff --quiet && git diff --staged --quiet || (git commit -m "Update website content [CI]" && git push)
+        if git diff --quiet && git diff --staged --quiet; then
+          echo "No changes to commit"
+        else
+          git commit -m "Update website content [CI]"
+          git push
+        fi
