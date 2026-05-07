@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 import re
 from pathlib import Path
-from datetime import datetime
 
 # Read the markdown file
 md_file = Path("content/page-content.md")
@@ -76,5 +75,3 @@ index_html_file.write_text(index_html)
 print(f"✓ Updated index.html with {len(projects)} projects")
 
 print("\n✓ All pages updated successfully!")
-
-
