@@ -1,0 +1,170 @@
+
+body {
+    background-color: #ffffff;
+    color: #000000;
+    text-align: left;
+    font-family: "anon";
+    font-size: 12pt;
+    margin: 0;
+    padding: 0;
+    cursor: help;
+    word-break: normal;
+    scroll-behavior: smooth;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+h3 {
+    font-size: 13pt;
+}
+
+
+a:link { 
+    color: #333333; 
+    text-decoration: none;
+    word-break: break-all;
+}
+a:visited { 
+    color: #111111; 
+    text-decoration: none;
+}
+a:hover { 
+    color: #710c6c; 
+    transition: color 0.5s;
+    text-decoration: underline;
+    cursor: crosshair;
+}
+a:active { 
+    color: #d118c8; 
+    text-decoration: none;
+}
+
+/* New styles */
+header {
+    background-color: #eeeeee;
+    color: #111111;
+    padding: 10px;
+    flex: 0 0 auto;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#logo {
+    margin: 0;
+    font-size: 18pt;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav li {
+    margin-left: 20px;
+}
+
+nav a {
+    color: #111111;
+    text-decoration: none;
+}
+
+main {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+section {
+    flex: 0 0 auto;
+}
+
+#projects {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 20px 0;
+}
+
+.carousel-nav {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.carousel-nav a {
+    margin: 0 10px;
+    padding: 5px 10px;
+    background-color: #000000;
+    color: #111111;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.carousel-nav a:hover {
+    background-color: #d118c8;
+}
+
+.carousel {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    gap: 20px;
+    padding: 10px;
+    flex: 1;
+}
+
+.project {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.project img {
+    width: 100%;
+    height: 30vh;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.project p {
+    text-align: left;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    body {
+        margin: 5px;
+        font-size: 10pt;
+    }
+    
+    #logo {
+        font-size: 14pt;
+    }
+    
+    nav ul {
+        flex-direction: column;
+    }
+    
+    nav li {
+        margin: 5px 0;
+    }
+    
+    .carousel {
+        gap: 10px;
+    }
+}
